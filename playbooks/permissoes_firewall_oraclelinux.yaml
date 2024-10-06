@@ -1,0 +1,15 @@
+---
+- name: Configurar firewall no Oracle Linux 7.9
+  hosts: oraclelinux
+  remote_user: root
+  tasks:
+    - name: Instalar firewalld (se necessário)
+      yum:
+        name: firewalld
+        state: present
+
+    - name: Iniciar e habilitar o serviço firewalld
+      systemd:
+        name: firewalld
+        enabled: yes
+        state: started

@@ -1,0 +1,5 @@
+[debian]
+192.168.56.202 ansible_username=root ansible_password=root
+
+[oraclelinux]
+192.168.56.201 ansible_username=root ansible_password=root

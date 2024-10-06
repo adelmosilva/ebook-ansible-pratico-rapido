@@ -1,0 +1,14 @@
+---
+- name: Adicionar usuários ao grupo sudo
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: Adicionar o usuário ao grupo sudo
+      user:
+        name: "{{ item }}"
+        groups: root
+        append: yes
+      with_items:
+        - fulano
+        - beltrano
+        - ciclano

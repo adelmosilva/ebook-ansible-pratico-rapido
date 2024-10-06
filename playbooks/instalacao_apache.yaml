@@ -1,0 +1,15 @@
+---
+- name: Instalação do Apache em servidores web
+  hosts: debian
+  remote_user: root
+  tasks:
+    - name: Instalar o Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Garantir que o Apache esteja habilitado e rodando
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started

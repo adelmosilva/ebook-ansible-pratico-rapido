@@ -1,0 +1,25 @@
+---
+- name: Configurar Swap nos servidores
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: Criar arquivo de swap
+      command: fallocate -l 1G /swapfile
+
+    - name: Configurar permissões corretas no arquivo de swap
+      file:
+        path: /swapfile
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: Criar área de swap
+      command: mkswap /swapfile
+
+    - name: Ativar o swap
+      command: swapon /swapfile
+
+    - name: Adicionar swap ao /etc/fstab
+      lineinfile:
+        path: /etc/fstab
+        line: '/swapfile swap swap defaults 0 0'

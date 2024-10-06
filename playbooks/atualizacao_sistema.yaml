@@ -1,0 +1,8 @@
+---
+- name: Atualizar pacotes nos servidores de produção
+  hosts: debian
+  remote_user: root
+  tasks:
+    - name: Atualizar todos os pacotes
+      apt:
+        upgrade: dist

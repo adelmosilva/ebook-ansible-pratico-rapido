@@ -1,0 +1,16 @@
+---
+- name: Criar novos usuários no sistema
+  hosts: all
+  remote_user: root
+  tasks:
+  - name: Criar o usuário devops
+    user:
+      name: devops
+      state: present
+      shell: /bin/bash
+
+  - name: Adicionar o usuário devops ao grupo wheel (sudo)
+    user:
+      name: devops
+      groups: root
+      append: yes

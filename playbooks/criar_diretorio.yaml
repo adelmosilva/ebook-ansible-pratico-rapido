@@ -1,0 +1,13 @@
+---
+- name: Criar diretório de backup
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: Criar o diretório /backup
+      file:
+        path: /nfs-server
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+

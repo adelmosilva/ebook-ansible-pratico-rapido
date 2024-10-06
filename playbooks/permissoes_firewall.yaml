@@ -1,0 +1,25 @@
+---
+- name: Configurar firewall com UFW
+  hosts: debian
+  remote_user: root
+  tasks:
+    - name: instalando o UFW
+      apt:
+        name: ufw
+        state: present
+    - name: Garantir que o UFW esteja habilitado e rodando
+      systemd:
+        name: ufw
+        enabled: yes
+        state: started       
+    - name: Permitir tráfego na porta 22 (SSH)
+      ufw:
+        rule: allow
+        port: 22
+    - name: Permitir tráfego na porta 80 (HTTP)
+      ufw:
+        rule: allow
+        port: 80
+    - name: Ativar o firewall
+      ufw:
+        state: enabled

@@ -1,0 +1,8 @@
+---
+- name: Configurar o timezone nos servidores
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: Definir timezone para America/Sao_Paulo
+      timezone:
+        name: "America/Sao_Paulo"
